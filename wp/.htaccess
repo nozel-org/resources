@@ -1,8 +1,23 @@
-# enable basic authentication
+# Enable basic authentication
 AuthType Basic
 AuthName “Restricted”
 AuthUserFile /etc/apache2/.htpasswords/.htpasswd-wp
 require valid-user
+<Files admin-ajax.php>
+  Order allow,deny
+  Allow from all
+  Satisfy any
+</Files>
+<Files admin-post.php>
+  Order allow,deny
+  Allow from all
+  Satisfy any
+</Files>
+<Files "\.(css|gif|png|js)$">
+  Order allow,deny
+  Allow from all
+  Satisfy any
+</Files>
 
 # enable some Dutch providers
 order deny,allow
